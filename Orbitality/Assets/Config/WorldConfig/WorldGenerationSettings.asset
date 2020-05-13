@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be8258ce23734674824c533b9fe06b7f, type: 3}
+  m_Name: WorldGenerationSettings
+  m_EditorClassIdentifier: 
+  Configs:
+  - {fileID: 11400000, guid: b39d942d7994d6f408db69dc254e2e0f, type: 2}
+  - {fileID: 11400000, guid: 3ff58dd527890d848810aa4b83b139c9, type: 2}
+  - {fileID: 11400000, guid: e4ba3d489a78bc34282ffc6c7a6d9945, type: 2}
+  - {fileID: 11400000, guid: dab636ff6b491454689c97a0b890f487, type: 2}
+  - {fileID: 11400000, guid: 6c3002dfae4c57b438e64c5dd6d92c68, type: 2}
+  - {fileID: 11400000, guid: 2107958a1607b1c44a719ee73f9f2e91, type: 2}
+  - {fileID: 11400000, guid: a360817cfd546934ca693db46a1ee346, type: 2}
+  RadiusStep: 30
+  MinRadius: 50

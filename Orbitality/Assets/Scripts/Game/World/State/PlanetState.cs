@@ -10,6 +10,7 @@ namespace Game.Generation.State
         public int Id;
         public float Health;
         public float Speed;
-        public Vector2 Position;
+        public Vector2 Position;      
+        public float LifeTime;
     }
 }

@@ -23,7 +23,7 @@ namespace Game.Generation
                 planetState.Id = i;
                 planetState.Health = planetConfig.Parameters.GetHealth();
                 planetState.Speed = planetConfig.Parameters.GetSpeed();
-                
+                planetState.LifeTime = UnityEngine.Random.Range(0, 1000);
                 state.PlanetStates.Add(planetState);
             }
 

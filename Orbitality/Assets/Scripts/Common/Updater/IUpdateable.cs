@@ -1,4 +1,4 @@
-﻿namespace Comon.Updater
+﻿namespace Common.Updater
 {
     public interface IUpdateable
     {

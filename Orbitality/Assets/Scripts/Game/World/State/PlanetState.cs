@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Game.Generation.State
+namespace Game.World.State
 {
     [Serializable]
     public struct 
@@ -12,5 +12,6 @@ namespace Game.Generation.State
         public float Speed;
         public Vector2 Position;      
         public float LifeTime;
+        public int WeaponId;
     }
 }

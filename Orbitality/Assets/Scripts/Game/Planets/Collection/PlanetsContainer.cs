@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using Game.Planets.Instance;
 
-namespace Game.Planets
+namespace Game.Planets.Collection
 {
     public class PlanetsContainer: IPlanetsContainer
     {

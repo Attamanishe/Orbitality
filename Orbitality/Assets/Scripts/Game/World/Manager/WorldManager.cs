@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Comon;
-using Game.Generation;
-using Game.Generation.Config;
-using Game.Generation.State;
+using Common;
 using Game.Planets.Controller;
 using Game.Planets.Controller.Movements;
-using Game.Planets.Factory;
+using Game.Planets.Instance;
+using Game.Planets.ModelFactory;
+using Game.Weapon.Config;
+using Game.World.Config;
+using Game.World.Logic;
+using Game.World.State;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using Random = System.Random;
@@ -26,7 +28,7 @@ namespace Game.World.Manager
             WorldState state = LaunchGameSettings.Instance.StateToLoad.PlanetStates == null
                 ? _logicWorldGenerator.Generate(LaunchGameSettings.Instance.PlayersCount, _generationSettings)
                 : LaunchGameSettings.Instance.StateToLoad;
-           
+
             InstantiatePlanets(state);
             MovementsController.Instance.Init(state.RadiusStep, state.MinRadius);
         }
@@ -43,6 +45,7 @@ namespace Game.World.Manager
                 PlanetState planetState = new PlanetState();
                 IPlanet planet = PlanetsController.Instance.Get(i);
                 planetState.Id = planet.Id;
+                planetState.WeaponId = planet.WeaponId;
                 planetState.Health = planet.GetHealth();
                 planetState.Speed = planet.GetSpeed();
                 planetState.Position = planet.GetPosition();
@@ -61,7 +64,11 @@ namespace Game.World.Manager
                 PlanetState planetState = state.PlanetStates[i];
                 PlanetConfig config =
                     _generationSettings.Configs.FirstOrDefault(c => c.Parameters.Id == planetState.Id);
-                IPlanet planet = PlanetsMonoFactory.Instance.Create(config.Model, config.Parameters);
+
+                WeaponConfig weaponParameters =
+                    _generationSettings.WeaponConfigs.FirstOrDefault(w => w.Model.Id == planetState.WeaponId);
+                IPlanet planet =
+                    PlanetsMonoFactory.Instance.Create(config.Model, weaponParameters.Model, config.Parameters);
                 planet.SetLifeTime(planetState.LifeTime);
                 PlanetsController.Instance.Add(planet);
             }
@@ -79,7 +86,7 @@ namespace Game.World.Manager
         {
             Time.timeScale = 0;
         }
-        
+
         public void Resume()
         {
             Time.timeScale = 1;

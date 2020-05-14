@@ -1,4 +1,4 @@
-﻿namespace Comon.SceneManagment
+﻿namespace Common.SceneManagment
 {
     public enum Scene
     {

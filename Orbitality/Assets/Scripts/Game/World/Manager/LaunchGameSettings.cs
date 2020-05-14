@@ -1,5 +1,5 @@
-﻿using Comon;
-using Game.Generation.State;
+﻿using Common;
+using Game.World.State;
 
 namespace Game.World.Manager
 {

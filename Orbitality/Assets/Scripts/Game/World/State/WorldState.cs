@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Game.Generation.State
+namespace Game.World.State
 {
     [Serializable]
     public struct WorldState

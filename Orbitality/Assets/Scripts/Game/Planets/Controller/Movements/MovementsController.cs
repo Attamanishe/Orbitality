@@ -1,6 +1,7 @@
 ﻿using System;
-using Comon;
-using Comon.Updater;
+using Common;
+using Common.Updater;
+using Game.Planets.Instance;
 using UnityEngine;
 
 namespace Game.Planets.Controller.Movements

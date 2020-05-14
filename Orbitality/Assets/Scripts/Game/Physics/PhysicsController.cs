@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using Comon;
-using Comon.Updater;
+using Common;
+using Common.Updater;
 using UnityEngine;
 
 namespace Game.Physics

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Comon.Updater
+namespace Common.Updater
 {
     public class UpdaterManager : MonoSingleton<UpdaterManager>
     {

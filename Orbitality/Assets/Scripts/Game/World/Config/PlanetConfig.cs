@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using Game.Planets.Instance;
+using UnityEngine;
 
-namespace Game.Generation
+namespace Game.World.Config
 {
     [CreateAssetMenu(fileName = "NewPlanetConfig", menuName = "Generation/PlanetConfig", order = 0)]
     public class PlanetConfig : ScriptableObject

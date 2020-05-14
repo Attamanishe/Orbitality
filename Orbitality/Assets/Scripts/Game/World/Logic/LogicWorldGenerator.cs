@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using Game.Generation.Config;
-using Game.Generation.State;
+using Game.World.Config;
+using Game.World.State;
 using UnityEngine;
 
-namespace Game.Generation
+namespace Game.World.Logic
 {
     public class LogicWorldGenerator : ILogicWorldGenerator
     {
@@ -19,8 +19,11 @@ namespace Game.Generation
                 PlanetState planetState = new PlanetState();
                 PlanetConfig planetConfig =
                     generationSettings.Configs[Random.Range(0, generationSettings.Configs.Count)];
+                WeaponConfig weaponConfig =
+                    generationSettings.WeaponConfigs[Random.Range(0, generationSettings.WeaponConfigs.Count)];
                 
-                planetState.Id = i;
+                planetState.Id = planetConfig.Parameters.Id;
+                planetState.WeaponId = weaponConfig.Model.Id;
                 planetState.Health = planetConfig.Parameters.GetHealth();
                 planetState.Speed = planetConfig.Parameters.GetSpeed();
                 planetState.LifeTime = UnityEngine.Random.Range(0, 1000);

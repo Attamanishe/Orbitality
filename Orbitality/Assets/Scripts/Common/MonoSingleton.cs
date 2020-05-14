@@ -2,7 +2,7 @@
 using UnityEngine;
 using System.Reflection;
 
-namespace Comon
+namespace Common
 {
     public class Singleton<T> : IDisposable where T : Singleton<T>
     {

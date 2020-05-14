@@ -1,4 +1,7 @@
-﻿public interface IPlanetVisualModel
+﻿namespace Game.Planets.Instance
 {
+    public interface IPlanetVisualModel
+    {
     
+    }
 }

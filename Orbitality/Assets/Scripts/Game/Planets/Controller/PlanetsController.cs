@@ -1,4 +1,6 @@
-﻿using Comon;
+﻿using Common;
+using Game.Planets.Collection;
+using Game.Planets.Instance;
 
 namespace Game.Planets.Controller
 {

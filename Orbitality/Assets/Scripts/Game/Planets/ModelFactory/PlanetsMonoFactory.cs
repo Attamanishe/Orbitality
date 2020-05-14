@@ -1,7 +1,8 @@
-﻿using System;
+﻿using Game.Planets.Instance;
+using Game.World.Config;
 using UnityEngine;
 
-namespace Game.Planets.Factory
+namespace Game.Planets.ModelFactory
 {
     public class PlanetsMonoFactory : MonoBehaviour, IPlanetsFactory
     {
@@ -15,11 +16,12 @@ namespace Game.Planets.Factory
             Instance = this;
         }
 
-        public IPlanet Create(PlanetInstance modelPrefab, IPlanetParameters parameters)
+        public IPlanet Create(PlanetInstance modelPrefab, Weapon.Base.Weapon weaponPrefab, IPlanetParameters parameters)
         {
             Planet planet = Instantiate(_planetPrefab, _instantiationRoot);
             PlanetInstance instance = Instantiate(modelPrefab, planet.transform);
-            planet.Init(instance, parameters);
+            Weapon.Base.Weapon weapon = Instantiate(weaponPrefab, planet.transform);
+            planet.Init(instance, parameters, weapon);
             return planet;
         }
     }

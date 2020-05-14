@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 
-public class PlanetInstance : MonoBehaviour, IPlanetVisualModel
+namespace Game.Planets.Instance
 {
+    public class PlanetInstance : MonoBehaviour, IPlanetVisualModel
+    {
+    }
 }

@@ -1,7 +1,7 @@
-﻿using Game.Generation.Config;
-using Game.Generation.State;
+﻿using Game.World.Config;
+using Game.World.State;
 
-namespace Game.Generation
+namespace Game.World.Logic
 {
     public interface ILogicWorldGenerator
     {

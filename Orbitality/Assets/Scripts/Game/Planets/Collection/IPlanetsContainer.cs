@@ -1,4 +1,6 @@
-﻿namespace Game.Planets
+﻿using Game.Planets.Instance;
+
+namespace Game.Planets.Collection
 {
     public interface IPlanetsContainer
     {

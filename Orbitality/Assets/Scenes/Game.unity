@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 98527946}
   - component: {fileID: 98527949}
   - component: {fileID: 98527948}
+  - component: {fileID: 98527947}
   m_Layer: 0
   m_Name: Sun
   m_TagString: Untagged
@@ -145,6 +146,20 @@ Transform:
   m_Father: {fileID: 666038351}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &98527947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 98527945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a3a1348bb1544ff937fdc9d1d53a080, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Weigth: 1000
+  Radius: 50
 --- !u!23 &98527948
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -832,6 +847,7 @@ GameObject:
   - component: {fileID: 666038354}
   - component: {fileID: 666038353}
   - component: {fileID: 666038352}
+  - component: {fileID: 666038355}
   m_Layer: 0
   m_Name: WorldRoot
   m_TagString: Untagged
@@ -897,6 +913,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80b6b834723e42cf9133e50ffb4697b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &666038355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 666038350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d18c3284cfc7460592f4fb5cbffd2852, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gravityScale: 100
 --- !u!1 &772410923
 GameObject:
   m_ObjectHideFlags: 0

@@ -21,7 +21,7 @@ namespace Game.Planets.Controller.Movements
             _minRadius = minRadius;
         }
 
-        public void Update(float deltaTime)
+        public void DoUpdate(float deltaTime)
         {
             PlanetsController planetsController = PlanetsController.Instance;
             for (int i = 0; i < planetsController.GetCount(); i++)

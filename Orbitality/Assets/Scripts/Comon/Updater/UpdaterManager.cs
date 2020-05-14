@@ -29,7 +29,7 @@ namespace Comon.Updater
             float delta = Time.deltaTime;
             for (int i = 0; i < _updateables.Count; i++)
             {
-                _updateables[i].Update(delta);
+                _updateables[i].DoUpdate(delta);
             }
         }
     }

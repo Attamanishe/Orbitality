@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Game.Physics;
 using UnityEngine;
 
-public class Planet : MonoBehaviour, IPlanet
+public class Planet : PhysicStaticObject, IPlanet
 {
     public int Id => _parameters.Id;
     public event Action<IPlanet> OnLogicalDestroy;

@@ -16,6 +16,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private TMP_Text _playersCountText;
     private void Awake()
     {
+        LaunchGameSettings.Instance.StateToLoad = default;
         _newGame.onClick.AddListener(NewGame);
         _loadGame.onClick.AddListener(LoadGame);
         _loadGame.enabled = SaveLoadController.Instance.HasSave();

@@ -10,7 +10,7 @@ namespace Game.Planets.Controller.Movements
         private float _radiusStep;
         private float _minRadius;
 
-        public MovementsController()
+        protected MovementsController() : base()
         {
             UpdaterManager.Instance.Add(this);
         }

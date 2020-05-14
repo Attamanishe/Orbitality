@@ -66,5 +66,23 @@ namespace Game.World.Manager
                 PlanetsController.Instance.Add(planet);
             }
         }
+
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+            PlanetsController.Instance.Dispose();
+            MovementsController.Instance.Dispose();
+            Time.timeScale = 1;
+        }
+
+        public void Pause()
+        {
+            Time.timeScale = 0;
+        }
+        
+        public void Resume()
+        {
+            Time.timeScale = 1;
+        }
     }
 }

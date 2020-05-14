@@ -26,7 +26,7 @@ public class GameMenu : MonoBehaviour
 
     public void Pause()
     {
-        Time.timeScale = 0;
+        WorldManager.Instance.Pause();
         _pausePanel.SetActive(true);
         _resume.gameObject.SetActive(true);
         _pause.gameObject.SetActive(false);
@@ -34,7 +34,7 @@ public class GameMenu : MonoBehaviour
 
     public void Resume()
     {
-        Time.timeScale = 1;
+        WorldManager.Instance.Resume();
         _pausePanel.SetActive(false);
         _resume.gameObject.SetActive(false);
         _pause.gameObject.SetActive(true);

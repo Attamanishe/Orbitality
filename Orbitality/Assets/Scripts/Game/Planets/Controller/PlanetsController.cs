@@ -6,7 +6,7 @@ namespace Game.Planets.Controller
     {
         private PlanetsContainer _container;
         
-        public PlanetsController():base()
+        protected PlanetsController():base()
         {
             _container = new PlanetsContainer();
         }

@@ -8,6 +8,11 @@ namespace Game.SaveLoad
     {
         private const string SaveGameKey = "Save";
         public WorldState LoadedSave;
+
+        protected SaveLoadController() : base()
+        {
+            
+        }
         public void Save(WorldState state)
         {
             PlayerPrefs.SetString(SaveGameKey,JsonUtility.ToJson(state));

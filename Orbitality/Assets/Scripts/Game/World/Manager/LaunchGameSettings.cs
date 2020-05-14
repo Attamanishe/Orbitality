@@ -8,5 +8,10 @@ namespace Game.World.Manager
     {
         public int PlayersCount;
         public WorldState StateToLoad;
+
+        protected LaunchGameSettings() : base()
+        {
+            
+        }
     }
 }

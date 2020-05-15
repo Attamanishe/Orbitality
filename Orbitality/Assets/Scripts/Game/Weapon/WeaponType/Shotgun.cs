@@ -23,11 +23,27 @@ namespace Game.Weapon.WeaponType
             for (int i = 0; i < parameters.BulletsCount; i++)
             {
                 Bullet bullet = _pool.Get(WorldManager.Instance.transform);
-                bullet.SetPosition(new Vector2(transform.localPosition.x, transform.localPosition.z));
+                bullet.SetSpeed(Vector2.zero);
+                bullet.SetPosition(new Vector2(transform.position.x, transform.position.z) +
+                                   speed.normalized * (bullet.GetSize() + Owner.GetSize() + 2));
                 bullet.SetSpeed(parameters.BulletSpeed *
-                                (speed + new Vector2(Random.Range(-parameters.RangeOffset, parameters.RangeOffset),
-                                    Random.Range(-parameters.RangeOffset, parameters.RangeOffset))));
+                                (speed + GetNormal(speed)*UnityEngine.Random.Range(-parameters.RangeOffset, parameters.RangeOffset)));
+
+                bullet.OnCollision += b =>
+                {
+                    _pool.Release(bullet);
+                };
+                
+                bullet.OnRemoved += () =>
+                {
+                    _pool.Release(bullet);
+                };
             }
+        }
+
+        private static Vector2 GetNormal(Vector2 origin)
+        {
+            return new Vector2(origin.y, origin.x);
         }
     }
 }

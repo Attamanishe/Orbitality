@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: ShotgunConfig
+  m_Script: {fileID: 11500000, guid: 85d34c78b5a343808e55e66fc087fb06, type: 3}
+  m_Name: MachineGunConfig
   m_EditorClassIdentifier: Assembly-CSharp:Game.World.Config:WeaponConfig
-  Model: {fileID: 7457190228680522420, guid: de3893d1eae5faa49b2d65efdccb2a5c, type: 3}
+  Model: {fileID: 8361224410141338660, guid: ac8b4f4fa234b2b40b3c53c1c844203e, type: 3}

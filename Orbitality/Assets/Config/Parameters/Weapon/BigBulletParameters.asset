@@ -15,6 +15,6 @@ MonoBehaviour:
   Id: 0
   Cooldown: 2
   Damage: 10
-  BulletSpeed: 10
+  BulletSpeed: 200
   BulletPrefab: {fileID: 6812601340861312534, guid: 81fcdd0a3b92b564ab8c24553484ff1b,
     type: 3}

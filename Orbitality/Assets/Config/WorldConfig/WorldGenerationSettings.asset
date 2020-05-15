@@ -22,7 +22,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a360817cfd546934ca693db46a1ee346, type: 2}
   WeaponConfigs:
   - {fileID: 11400000, guid: 2050910a356abb74595751d0fa49b904, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: f7e22fb25c1658a46ad9244ecf335825, type: 2}
+  - {fileID: 11400000, guid: a14f030bf0a902c46a62427a2c2fd5d5, type: 2}
   RadiusStep: 30
   MinRadius: 50

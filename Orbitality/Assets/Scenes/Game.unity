@@ -158,8 +158,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a3a1348bb1544ff937fdc9d1d53a080, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Weigth: 1000
-  Radius: 50
+  Weigth: 10000
+  Radius: 25
 --- !u!23 &98527948
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -926,6 +926,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gravityScale: 100
+  _worldRadius: 1000
 --- !u!1 &772410923
 GameObject:
   m_ObjectHideFlags: 0

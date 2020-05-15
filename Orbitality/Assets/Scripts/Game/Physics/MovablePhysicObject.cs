@@ -8,7 +8,7 @@ namespace Game.Physics
         public event Action<IPhysicObject> OnCollision;
         protected Vector2 Speed;
 
-        public virtual void Awake()
+        public virtual void OnEnable()
         {
             PhysicsController.Instance.AddMovable(this);
         }
@@ -26,6 +26,7 @@ namespace Game.Physics
         
         public virtual void SetPosition(Vector2 position)
         {
+            Position = position;
             Vector3 currentPosition = transform.localPosition;
             transform.localPosition = new Vector3(position.x, currentPosition.y, position.y);
         }
@@ -36,9 +37,15 @@ namespace Game.Physics
             OnCollision?.Invoke(obj);
         }
 
-        public virtual void OnDestroy()
+        public virtual void OnDisable()
         {
-            PhysicsController.Instance.RemoveMovable(this);
+            PhysicsController.Instance?.RemoveMovable(this);
+        }
+
+        public override void ClearListeners()
+        {
+            base.ClearListeners();
+            OnCollision = null;
         }
     }
 }

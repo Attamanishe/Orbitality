@@ -8,9 +8,10 @@ namespace Game.Physics
     public class PhysicsController : MonoSingleton<PhysicsController>, IUpdateable
     {
         [SerializeField] private float _gravityScale = 100;
+        [SerializeField] private float _worldRadius = 1000;
         private List<IPhysicObject> _staticObjects = new List<IPhysicObject>();
         private List<IMovableObject> _movableObjects = new List<IMovableObject>();
-
+        
         protected override void Awake()
         {
             base.Awake();
@@ -77,11 +78,18 @@ namespace Game.Physics
                 {
                     IPhysicObject staticObject = _staticObjects[i];
                     Vector2 dirraction = staticObject.GetPosition() - movableObject.GetPosition();
-                    float acceleration = staticObject.GetWeight() / dirraction.sqrMagnitude;
-                    speed += dirraction.normalized * acceleration * deltaTime;
+                    if (dirraction.sqrMagnitude > 1)
+                    {
+                        float acceleration = staticObject.GetWeight() / dirraction.sqrMagnitude *_gravityScale;
+                        speed += dirraction.normalized * acceleration * deltaTime;
+                    }
                 }
                 movableObject.SetPosition( movableObject.GetPosition()+speed * deltaTime);
                 movableObject.SetSpeed(speed);
+                if (movableObject.GetPosition().magnitude > _worldRadius)
+                {
+                    movableObject.RemoveFromLogic();
+                }
             }
         }
     }

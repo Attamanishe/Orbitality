@@ -18,6 +18,8 @@ namespace Game.Planets.Instance
         {
             _planetInstance = planetInstance;
             _parameters = parameters;
+            _weapon = weapon;
+            _weapon.Init(this);
         }
     
         public float GetHealth()
@@ -59,16 +61,20 @@ namespace Game.Planets.Instance
         {
             Vector3 p = new Vector3(position.x, transform.localPosition.y, position.y);
             transform.localPosition = p;
-        }
-
-        public Vector2 GetPosition()
-        {
-            return Vector2.zero;
+            Position = position;
         }
 
         private void Destroy()
         {
             Destroy(gameObject, 3);
+        }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                _weapon.Shot(Vector2.left, GetPosition());
+            }
         }
     }
 }

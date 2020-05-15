@@ -18,7 +18,19 @@ namespace Game.Weapon.WeaponType
 
         public override void Shot(Vector2 speed, Vector2 position)
         {
+            Bullet bullet = _pool.Get(WorldManager.Instance.transform);
+            bullet.SetPosition(new Vector2(transform.position.x, transform.position.z) +
+                               speed.normalized * (bullet.GetSize() + Owner.GetSize() + 1));
+            bullet.SetSpeed(Parameters.BulletSpeed * speed);
+            bullet.OnCollision += b =>
+            {
+                _pool.Release(bullet);
+            };
             
+            bullet.OnRemoved += () =>
+            {
+                _pool.Release(bullet);
+            };
         }
     }
 }

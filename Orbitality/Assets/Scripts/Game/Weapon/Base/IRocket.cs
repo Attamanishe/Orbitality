@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Game.Planets.Instance;
+using UnityEngine;
 
 namespace Game.Weapon.Base
 {
@@ -7,5 +8,6 @@ namespace Game.Weapon.Base
         int Id { get; }
         float GetCooldown();
         void Shot(Vector2 speed, Vector2 position);
+        void Init(Planet owner);
     }
 }

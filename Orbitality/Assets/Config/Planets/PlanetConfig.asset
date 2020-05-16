@@ -13,8 +13,6 @@ MonoBehaviour:
   m_Name: PlanetConfig
   m_EditorClassIdentifier: 
   Model: {fileID: 8346965738170965016, guid: 2303b05eab95a1e45a2b5befb703f71a, type: 3}
-  Parameters:
-    m_Id: 0
-    m_Health: 5
-    m_Speed: 50
-    m_LifeTime: 0
+  Id: 0
+  Health: 20
+  Speed: 50

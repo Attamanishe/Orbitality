@@ -8,10 +8,11 @@ namespace Game.World.State
         PlanetState
     {
         public int Id;
+        public int WeaponId;
         public float Health;
         public float Speed;
         public Vector2 Position;      
         public float LifeTime;
-        public int WeaponId;
+        public bool isControlledByPlayer;
     }
 }

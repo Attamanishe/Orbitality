@@ -2,6 +2,7 @@
 using Common;
 using Common.Updater;
 using Game.Planets.Instance;
+using Game.World.State;
 using UnityEngine;
 
 namespace Game.Planets.Controller.Movements
@@ -29,13 +30,14 @@ namespace Game.Planets.Controller.Movements
             {
                 IPlanet planet = planetsController.Get(i);
                 //there will be destroyed planets with health < 0 in container to save progress and planets state
-                if (planet.GetHealth() > 0)
+                PlanetState state = planet.GetPlanetState();
+                if (state.Health > 0)
                 {
-                    float speed = planet.GetSpeed();
-                    Vector2 position = planet.GetPosition();
+                    float speed = state.Speed;
+                    Vector2 position = state.Position;
                     float currentRadius = _minRadius + (i * _radiusStep);
-                    planet.SetPosition(MovingMath.GetPosition(planet.GetLifeTime(), currentRadius, speed));
-                    planet.SetLifeTime(planet.GetLifeTime() + deltaTime);
+                    planet.SetPosition(MovingMath.GetPosition(state.LifeTime, currentRadius, speed));
+                    planet.SetLifeTime(state.LifeTime + deltaTime);
                 }
             }
         }

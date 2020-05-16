@@ -22,14 +22,18 @@ namespace Game.World.Logic
                 WeaponConfig weaponConfig =
                     generationSettings.WeaponConfigs[Random.Range(0, generationSettings.WeaponConfigs.Count)];
                 
-                planetState.Id = planetConfig.Parameters.Id;
+                planetState.Id = planetConfig.Id;
                 planetState.WeaponId = weaponConfig.Model.Id;
-                planetState.Health = planetConfig.Parameters.GetHealth();
-                planetState.Speed = planetConfig.Parameters.GetSpeed();
+                planetState.Health = planetConfig.Health;
+                planetState.Speed = planetConfig.Speed;
                 planetState.LifeTime = UnityEngine.Random.Range(0, 1000);
                 state.PlanetStates.Add(planetState);
             }
 
+            PlanetState planetStates = state.PlanetStates[Random.Range(0, state.PlanetStates.Count)];
+            planetStates.isControlledByPlayer = true;
+            state.PlanetStates[Random.Range(0, state.PlanetStates.Count)] = planetStates;
+            
             return state;
         }
     }

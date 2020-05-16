@@ -2,79 +2,63 @@
 using Game.Physics;
 using Game.Weapon.Base;
 using Game.World.Config;
+using Game.World.State;
 using UnityEngine;
 
 namespace Game.Planets.Instance
 {
     public class Planet : PhysicStaticObject, IPlanet
     {
-        public int Id => _parameters.Id;
-        public int WeaponId => _weapon.Id;
+        public int Id => _planetState.Id;
+        public int WeaponId => _planetState.WeaponId;
         public event Action<IPlanet> OnLogicalDestroy;
-        private IPlanetParameters _parameters;
         private IPlanetVisualModel _planetInstance;
         private IWeapon _weapon;
-        public void Init(IPlanetVisualModel planetInstance, IPlanetParameters parameters, IWeapon weapon)
+        private PlanetState _planetState;
+        public void Init(IPlanetVisualModel planetInstance, IWeapon weapon, PlanetState state)
         {
             _planetInstance = planetInstance;
-            _parameters = parameters;
             _weapon = weapon;
             _weapon.Init(this);
-        }
-    
-        public float GetHealth()
-        {
-            return _parameters.GetHealth();
+            _planetState = state;
         }
 
-        public float GetSpeed()
+        public IWeapon GetWeapon()
         {
-            return _parameters.GetSpeed();
+            return _weapon;
         }
 
-        public float GetLifeTime()
+        public PlanetState GetPlanetState()
         {
-            return _parameters.GetLifeTime();
+            return _planetState;
         }
 
         public void SetLifeTime(float time)
         {
-            _parameters.SetLifeTime(time);
-        }
-
-        public void SetSpeed(float speed)
-        {
-            _parameters.SetSpeed(speed);
+            _planetState.LifeTime = time;
         }
 
         public void GotDamage(float damage)
         {
-            _parameters.SetHealth(_parameters.GetHealth() - damage);
-            if (_parameters.GetHealth() <= 0)
+            _planetState.Health -= damage;
+            if (_planetState.Health <= 0)
             {
-                OnLogicalDestroy(this);
+                OnLogicalDestroy?.Invoke(this);
                 Destroy();
             }
         }
-
+        
         public void SetPosition(Vector2 position)
         {
             Vector3 p = new Vector3(position.x, transform.localPosition.y, position.y);
             transform.localPosition = p;
+            _planetState.Position = position;
             Position = position;
         }
 
         private void Destroy()
         {
             Destroy(gameObject, 3);
-        }
-
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                _weapon.Shot(Vector2.left, GetPosition());
-            }
         }
     }
 }

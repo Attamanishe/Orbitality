@@ -7,6 +7,7 @@ using Game.Planets.Controller.Movements;
 using Game.Planets.Instance;
 using Game.Planets.ModelFactory;
 using Game.Weapon.Config;
+using Game.Weapon.Controller;
 using Game.World.Config;
 using Game.World.Logic;
 using Game.World.State;
@@ -42,15 +43,8 @@ namespace Game.World.Manager
 
             for (int i = 0; i < PlanetsController.Instance.GetCount(); i++)
             {
-                PlanetState planetState = new PlanetState();
                 IPlanet planet = PlanetsController.Instance.Get(i);
-                planetState.Id = planet.Id;
-                planetState.WeaponId = planet.WeaponId;
-                planetState.Health = planet.GetHealth();
-                planetState.Speed = planet.GetSpeed();
-                planetState.Position = planet.GetPosition();
-                planetState.LifeTime = planet.GetLifeTime();
-
+                PlanetState planetState = planet.GetPlanetState();
                 state.PlanetStates.Add(planetState);
             }
 
@@ -63,13 +57,12 @@ namespace Game.World.Manager
             {
                 PlanetState planetState = state.PlanetStates[i];
                 PlanetConfig config =
-                    _generationSettings.Configs.FirstOrDefault(c => c.Parameters.Id == planetState.Id);
+                    _generationSettings.Configs.FirstOrDefault(c => c.Id == planetState.Id);
 
                 WeaponConfig weaponParameters =
                     _generationSettings.WeaponConfigs.FirstOrDefault(w => w.Model.Id == planetState.WeaponId);
                 IPlanet planet =
-                    PlanetsMonoFactory.Instance.Create(config.Model, weaponParameters.Model, config.Parameters);
-                planet.SetLifeTime(planetState.LifeTime);
+                    PlanetsMonoFactory.Instance.Create(config.Model, weaponParameters.Model, planetState);
                 PlanetsController.Instance.Add(planet);
             }
         }
@@ -79,6 +72,7 @@ namespace Game.World.Manager
             base.OnDestroy();
             PlanetsController.Instance.Dispose();
             MovementsController.Instance.Dispose();
+            WeaponControllerDistributor.Instance.Dispose();
             Time.timeScale = 1;
         }
 

@@ -10,34 +10,20 @@ namespace Game.Weapon.WeaponType
 {
     public class Shotgun : Base.Weapon
     {
-        private PrefabsPool<Bullet> _pool;
-
-        private void Awake()
-        {
-            _pool = new PrefabsPool<Bullet>(Parameters.BulletPrefab);
-        }
-
-        public override void Shot(Vector2 speed, Vector2 position)
+        public override void Shot(Vector2 speed)
         {
             ShotgunParameters parameters = Parameters as ShotgunParameters;
             for (int i = 0; i < parameters.BulletsCount; i++)
             {
-                Bullet bullet = _pool.Get(WorldManager.Instance.transform);
+                Bullet bullet = CreateBullet();
                 bullet.SetSpeed(Vector2.zero);
                 bullet.SetPosition(new Vector2(transform.position.x, transform.position.z) +
                                    speed.normalized * (bullet.GetSize() + Owner.GetSize() + 2));
-                bullet.SetSpeed(parameters.BulletSpeed *
-                                (speed + GetNormal(speed)*UnityEngine.Random.Range(-parameters.RangeOffset, parameters.RangeOffset)));
-
-                bullet.OnCollision += b =>
+                if (speed.magnitude > parameters.BulletSpeed)
                 {
-                    _pool.Release(bullet);
-                };
-                
-                bullet.OnRemoved += () =>
-                {
-                    _pool.Release(bullet);
-                };
+                    speed = speed.normalized * parameters.BulletSpeed;
+                }
+                bullet.SetSpeed(speed + GetNormal(speed)*UnityEngine.Random.Range(-parameters.RangeOffset, parameters.RangeOffset));
             }
         }
 

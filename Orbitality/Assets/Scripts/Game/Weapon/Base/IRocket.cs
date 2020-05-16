@@ -7,7 +7,9 @@ namespace Game.Weapon.Base
     {
         int Id { get; }
         float GetCooldown();
-        void Shot(Vector2 speed, Vector2 position);
+        float GetDamage();
+        float GetSpeed();
+        void Shot(Vector2 speed);
         void Init(Planet owner);
     }
 }

@@ -7,6 +7,8 @@ namespace Game.World.Config
     public class PlanetConfig : ScriptableObject
     {
         public PlanetInstance Model;
-        public PlanetParameters Parameters;
+        public int Id;
+        public float Health;
+        public float Speed;
     }
 }

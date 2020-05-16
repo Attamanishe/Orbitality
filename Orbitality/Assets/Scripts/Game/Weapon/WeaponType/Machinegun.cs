@@ -9,28 +9,16 @@ namespace Game.Weapon.WeaponType
 {
     public class Machinegun : Base.Weapon
     {
-        private PrefabsPool<Bullet> _pool;
-
-        private void Awake()
+        public override void Shot(Vector2 speed)
         {
-            _pool = new PrefabsPool<Bullet>(Parameters.BulletPrefab);
-        }
-
-        public override void Shot(Vector2 speed, Vector2 position)
-        {
-            Bullet bullet = _pool.Get(WorldManager.Instance.transform);
+            Bullet bullet = CreateBullet();
             bullet.SetPosition(new Vector2(transform.position.x, transform.position.z) +
                                speed.normalized * (bullet.GetSize() + Owner.GetSize() + 1));
-            bullet.SetSpeed(Parameters.BulletSpeed * speed);
-            bullet.OnCollision += b =>
+            if (speed.magnitude > Parameters.BulletSpeed)
             {
-                _pool.Release(bullet);
-            };
-            
-            bullet.OnRemoved += () =>
-            {
-                _pool.Release(bullet);
-            };
+                speed = speed.normalized * Parameters.BulletSpeed;
+            }
+            bullet.SetSpeed(speed);
         }
     }
 }

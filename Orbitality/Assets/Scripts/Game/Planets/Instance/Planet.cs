@@ -11,10 +11,13 @@ namespace Game.Planets.Instance
     {
         public int Id => _planetState.Id;
         public int WeaponId => _planetState.WeaponId;
+        public event Action<float> OnHealthChangePercents;
         public event Action<IPlanet> OnLogicalDestroy;
+
         private IPlanetVisualModel _planetInstance;
         private IWeapon _weapon;
         private PlanetState _planetState;
+
         public void Init(IPlanetVisualModel planetInstance, IWeapon weapon, PlanetState state)
         {
             _planetInstance = planetInstance;
@@ -41,13 +44,14 @@ namespace Game.Planets.Instance
         public void GotDamage(float damage)
         {
             _planetState.Health -= damage;
+            OnHealthChangePercents?.Invoke(_planetState.Health / _planetState.MaxHealth);
             if (_planetState.Health <= 0)
             {
                 OnLogicalDestroy?.Invoke(this);
                 Destroy();
             }
         }
-        
+
         public void SetPosition(Vector2 position)
         {
             Vector3 p = new Vector3(position.x, transform.localPosition.y, position.y);

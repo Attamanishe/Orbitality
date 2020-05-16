@@ -18,7 +18,7 @@ namespace Game.Weapon.WeaponType
                 Bullet bullet = CreateBullet();
                 bullet.SetSpeed(Vector2.zero);
                 bullet.SetPosition(new Vector2(transform.position.x, transform.position.z) +
-                                   speed.normalized * (bullet.GetSize() + Owner.GetSize() + 2));
+                                   speed.normalized * (bullet.GetSize() + Owner.GetSize() + 5));
                 if (speed.magnitude > parameters.BulletSpeed)
                 {
                     speed = speed.normalized * parameters.BulletSpeed;

@@ -25,6 +25,7 @@ namespace Game.World.Logic
                 planetState.Id = planetConfig.Id;
                 planetState.WeaponId = weaponConfig.Model.Id;
                 planetState.Health = planetConfig.Health;
+                planetState.MaxHealth = planetConfig.Health;
                 planetState.Speed = planetConfig.Speed;
                 planetState.LifeTime = UnityEngine.Random.Range(0, 1000);
                 state.PlanetStates.Add(planetState);

@@ -9,7 +9,7 @@ namespace Game.Weapon.Controller
     {
         protected Base.IWeapon Weapon;
 
-        public void Init(IWeapon weapon)
+        public WeaponController(IWeapon weapon)
         {
             Weapon = weapon;
         }

@@ -16,6 +16,10 @@ namespace Game.Planets.Controller
         public void Add(IPlanet planet)
         {
             _container.Add(planet);
+            if (planet.GetPlanetState().isControlledByPlayer)
+            {
+                PlayersPlanetObserver.Instance.Init(planet as Planet);
+            }
         }
         
         public IPlanet Get(int index)

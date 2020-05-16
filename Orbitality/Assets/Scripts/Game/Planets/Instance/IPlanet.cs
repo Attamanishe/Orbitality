@@ -8,6 +8,7 @@ namespace Game.Planets.Instance
 {
     public interface IPlanet
     {
+        event Action<float> OnHealthChangePercents;
         event Action<IPlanet> OnLogicalDestroy; 
         void Init(IPlanetVisualModel planetInstance, IWeapon weapon, PlanetState state);
         IWeapon GetWeapon();

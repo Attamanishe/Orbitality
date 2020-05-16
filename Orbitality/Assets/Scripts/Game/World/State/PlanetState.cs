@@ -10,6 +10,7 @@ namespace Game.World.State
         public int Id;
         public int WeaponId;
         public float Health;
+        public float MaxHealth;
         public float Speed;
         public Vector2 Position;      
         public float LifeTime;

@@ -7,6 +7,7 @@ namespace Game.Physics
 {
     public class PhysicsController : MonoSingleton<PhysicsController>, IUpdateable
     {
+        public float Gravity => _gravityScale;
         [SerializeField] private float _gravityScale = 100;
         [SerializeField] private float _worldRadius = 1000;
         private List<IPhysicObject> _staticObjects = new List<IPhysicObject>();
